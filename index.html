@@ -89,10 +89,12 @@
         if (email === '' || password === '') {
             signInMsg.className = "alert alert-danger";
             signInMsg.innerHTML = 'Por favor, preencha ambos os campos de email e palavra-passe.';
-        } else if (email === registeredEmail && password === registeredPassword) {
+        } 
+        else if (email === registeredEmail && password === registeredPassword) {
             signInMsg.innerHTML = 'Sessão iniciada!';
             window.location.href = "login.html";
-        } else {
+        } 
+        else {
             signInMsg.className = "alert alert-danger";
             signInMsg.innerHTML = 'Email ou palavra-passe inválida!';
         }
