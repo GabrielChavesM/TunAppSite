@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,6 +77,28 @@
                 container.classList.remove("right-panel-active");
         });
 
+    function signin(e) {
+        e.preventDefault();
+        console.log('Iniciando sessão....');
+        var email = document.getElementById('signinEmail').value;
+        var password = document.getElementById('signinPassword').value;
+        var signInMsg = document.getElementById('msg');
+        var registeredEmail = document.getElementById('email').value;
+        var registeredPassword = document.getElementById('password').value;
+
+        if (email === '' || password === '') {
+            signInMsg.className = "alert alert-danger";
+            signInMsg.innerHTML = 'Por favor, preencha ambos os campos de email e palavra-passe.';
+        } else if (email === registeredEmail && password === registeredPassword) {
+            signInMsg.innerHTML = 'Sessão iniciada!';
+            window.location.href = "login.html";
+        } else {
+            signInMsg.className = "alert alert-danger";
+            signInMsg.innerHTML = 'Email ou palavra-passe inválida!';
+        }
+    }
+
+
         function signup(e){
             e.preventDefault();
             console.log('Submitted....');
@@ -110,25 +132,6 @@
                         }
                     }
                 }
-            }
-        }
-
-        function signin(e){
-            e.preventDefault();
-            console.log('Iniciando sessão....');
-            var email = document.getElementById('signinEmail').value;
-            var password = document.getElementById('signinPassword').value;
-            var signInMsg = document.getElementById('msg');
-            var registeredEmail = document.getElementById('email').value;
-            var registeredPassword = document.getElementById('password').value;
-
-            if (email === registeredEmail && password === registeredPassword) {
-                signInMsg.innerHTML = 'Sessão iniciada!';
-                window.location.href = "login.html";
-            }
-            else {
-                signInMsg.className = "alert alert-danger";
-                signInMsg.innerHTML = 'Email ou palavra-passe inválida!';
             }
         }
 

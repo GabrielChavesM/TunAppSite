@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <button class="logout">log out</button>
+        <button class="logout">Terminar sessão</button>
         <h1 class="greeting"></h1>
     </div>
-    <script src="js/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select the logout button
+            const logoutButton = document.querySelector('.logout');
+            logoutButton.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
 </body>
 </html>
