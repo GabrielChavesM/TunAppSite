@@ -6,65 +6,64 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/form_style.css">
     <script defer src="js_font_awsome/all.js"></script>
-		<style>
-			body {
-					background-image: url('images/bg.jpg');
-					background-size: cover;
-					background-position: center;
-					background-repeat: no-repeat;
-				}
-		</style>
+    <style>
+        body {
+                background-image: url('images/bg.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+    </style>
 </head>
 <body>
     <div class="alert" id="msg"></div>
     <div class="container" id="container">
         <div class="form-container sign-up-container" id="signupForm">
             <form action="#">
-                <h1>Create Account</h1>
+                <h1>Criar Conta</h1>
                 <div class="social-container">
                     <a href="#" class="socail"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" id="name" />
+                <span>ou user o seu email para registar</span>
+                <input type="text" placeholder="Nome" id="name" />
                 <input type="email" placeholder="Email" id="email" />
-                <input type="password" placeholder="Password" id="password" />
-                <input type="password" placeholder="Confirm Password" id="password2">
-                <button>Sign Up</button>
+                <input type="password" placeholder="Palavra-passe" id="password" />
+                <input type="password" placeholder="Confirmar palavra-passe" id="password2">
+                <button>Registar</button>
             </form>
         </div>
         <div class="form-container sign-in-container" id="signinForm">
             <form action="#">
-                <h1>Sign in</h1>
+                <h1>Iniciar sessão</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your account</span>
+                <span>ou usar a sua conta</span>
                 <input type="email" placeholder="Email" id="signinEmail" />
-                <input type="password" placeholder="Password" id="signinPassword" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <input type="password" placeholder="Palavra-passe" id="signinPassword" />
+                <a href="#">Esqueceu a palavra passe?</a>
+                <button>Iniciar sessão</button>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <h1>Bem-vindo de volta!</h1>
+                    <p>Para continuar conectado connosco inicie sessão com sua informação</p>
+                    <button class="ghost" id="signIn">Iniciar sessão</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello Friends</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <h1>Olá amigos</h1>
+                    <p>Preencha seus dados pessoais e inicie uma jornada connosco</p>
+                    <button class="ghost" id="signUp">registar</button>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -78,7 +77,6 @@
                 container.classList.remove("right-panel-active");
         });
 
-        // Custom function for sign-up form validation
         function signup(e){
             e.preventDefault();
             console.log('Submitted....');
@@ -89,56 +87,51 @@
 
             var msg = document.getElementById('msg');
 
-            if(name=='' || email==''||password=='' || password2==''){
+            if(name=='' || email==''||password=='' || password2=='') {
                 msg.className = "alert alert-danger";
-                //you have to check this part that why this is not actually working .
-                //what i want is whever the alert shows up it should be in danger color
-                msg.innerHTML = 'please fill out all fields';
-            } else{
-                if(name.length < 3){
-                    msg.innerHTML = 'Name must be at least three characters';
-                } else{
+                msg.innerHTML = 'Preencha todos os campos.';
+            } 
+            else {
+                if(name.length < 3) {
+                    msg.innerHTML = 'O nome deve ter pelo menos 3 caracteres.';
+                } 
+                else {
                     var atpos = email.indexOf("@");
                     var dotpos = email.lastIndexOf(".");
-                    if(atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length){
-                        msg.innerHTML = 'Please use valid email';
-                    } else{
-                        if(password != password2){
-                            msg.innerHTML = 'Password do not match';
-                        } else{
-                            msg.innerHTML = name + ' is registered with email: ' + email;
+                    if(atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
+                        msg.innerHTML = 'Utilize um email válido';
+                    }
+                    else {
+                        if(password != password2) {
+                            msg.innerHTML = 'A palavra passe não está certa';
                         }
-                        // Redirect to "lol.html"
-                        //window.location.href = "lol.html";
+                        else {
+                            msg.innerHTML = name + ' está registado com o email: ' + email;
+                        }
                     }
                 }
             }
         }
 
-        // Custom function for sign-in form validation
-        function signin(e) {
+        function signin(e){
             e.preventDefault();
-            console.log('Signing in....');
+            console.log('Iniciando sessão....');
             var email = document.getElementById('signinEmail').value;
             var password = document.getElementById('signinPassword').value;
-            var signInMsg = document.getElementById('msg'); // Changed from 'signInMsg' to 'msg'
-
-            // Perform sign-in validation
-            // Check if entered email and password match any of the registered users' credentials
+            var signInMsg = document.getElementById('msg');
             var registeredEmail = document.getElementById('email').value;
             var registeredPassword = document.getElementById('password').value;
 
             if (email === registeredEmail && password === registeredPassword) {
-                signInMsg.innerHTML = 'Sign-in successful!';
-                // Redirect to "lol.html"
-                window.location.href = "lol.html";
-            } else {
+                signInMsg.innerHTML = 'Sessão iniciada!';
+                window.location.href = "login.html";
+            }
+            else {
                 signInMsg.className = "alert alert-danger";
-                signInMsg.innerHTML = 'Invalid email or password';
+                signInMsg.innerHTML = 'Email ou palavra-passe inválida!';
             }
         }
 
-        // Attach event listeners to the forms
         document.getElementById('signupForm').addEventListener('submit', signup, false);
         document.getElementById('signinForm').addEventListener('submit', signin, false);
     </script>
